@@ -1,0 +1,36 @@
+""" What's the time mr Wolf
+Joe Emmens 18/07/2020
+"""
+from random import randint
+import numpy as np
+
+distance = 20
+
+print("""English Tip: When we are asking questions we often begin with a \"W\" word.
+\"W\" words include, who, what, why, when. The structure of a question is
+_______________________________________________________________________________________________
+\"W\" word + auxiliary verb + article + noun 
+Example: What is an auxiliary verb? - Do, Be, Have.
+_______________________________________________________________________________________________
+You must ask the wolf, 
+What is the time mr Wolf?
+You have to steps until you are safely away from the wolf. Keep asking until you reach safety!
+""")
+while distance > 0:
+    player = input("What would you like to ask mr Wolf? ")
+    time = randint(1, 12)
+    if player == "What is the time mr Wolf?":
+        distance = distance - time
+        print("It's", time, """o'clock.
+             You creep forward """, time, """ steps.
+             Shhhh!""")
+        if (np.random.uniform(0, 1, 1) < 0.5) and (distance > 0):
+            print("""Oh no! You made a noise and the wolf heard you!
+            MMM! Delicious, you have been eaten by the wolf!""")
+            break
+        else:
+            print("You have ", distance, "steps left until saftey. Keep going!")
+    else:
+        print("The wolf asks, \"What did you say, arghhhhhh, check your English!\"")
+else:
+    print("You have escaped the wolf, well done!")
